@@ -88,15 +88,18 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     GLint id = old_glGetUniformLocation(currProgram, getShader());
     if (id == -1) return old_glDrawElements(mode, count, type, indices);
 
+    //OFF
     if (chamsint == 0) {
         old_glDrawElements(mode, count, type, indices);
     }
 
+    //Default Chams
     if (chamsint == 1) {
         glDepthRangef(1, 0.5);
         old_glDrawElements(GL_TRIANGLES, count, type, indices);
     }
 
+    //Shading Chams
     if (chamsint == 2) {
         glEnable(GL_BLEND);
         glDepthRangef(1, 0.5);
@@ -105,6 +108,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
         old_glDrawElements(GL_TRIANGLES, count, type, indices);
     }
 
+    //Wireframe Chams
     if (chamsint == 3) {
         old_glDrawElements(mode, count, type, indices);
         glEnable(GL_BLEND);
@@ -115,6 +119,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
         old_glDrawElements(GL_LINES, count, type, indices);
     }
 
+    //Outline Chams
     if (chamsint == 4) {
         old_glDrawElements(mode, count, type, indices);
         glDepthRangef(1, 0);
@@ -128,6 +133,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
         old_glDrawElements(GL_LINES, count, type, indices);
     }
 
+    //Visible Check Outline Chams
     if (chamsint == 5) {
         glEnable(GL_BLEND);
         glBlendFunc(GL_CONSTANT_COLOR, GL_CONSTANT_ALPHA);
@@ -142,6 +148,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     }
 
     //ZEFF: If you have java source, replace glBlendColor parameters
+    //Visible Check Shading Chams
     if (chamsint == 6) {
         glEnable(GL_BLEND);
         glDisable(GL_DEPTH_TEST);
@@ -154,6 +161,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
         old_glDrawElements(GL_TRIANGLES, count, type, indices);
     }
 
+    //Visible Check Shading + Outline Chams
     if (chamsint == 7) {
         glEnable(GL_BLEND);
         glDisable(GL_DEPTH_TEST);
