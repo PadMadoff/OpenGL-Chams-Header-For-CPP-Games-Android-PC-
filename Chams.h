@@ -66,8 +66,7 @@ void SetB(float set){
     b = set;
 }
 
-/*ZEFF: Uncomment the code if you want a shader dump.
-        Don't leave the code uncommented because it causes lag during the game.*/
+//ZEFF: Uncomment the code if you want a shader dump. Don't leave the code uncommented because it causes lag during the game.
 int (*old_glGetUniformLocation)(GLuint, const GLchar *);
 GLint new_glGetUniformLocation(GLuint program, const GLchar *name) {
     //ofstream(isDumpLocation) << isDump(name);
