@@ -164,10 +164,11 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     if (chamsint == 7) {
         glEnable(GL_BLEND);
         glDisable(GL_DEPTH_TEST);
-        glBlendFunc(GL_CONSTANT_COLOR, GL_CONSTANT_ALPHA);
+        glBlendFunc(GL_ONE, GL_CONSTANT_COLOR);
         glBlendColor(wallColor.x, wallColor.y, wallColor.z, 1);
         old_glDrawElements(GL_TRIANGLES, count, type, indices);
         glEnable(GL_DEPTH_TEST);
+        glBlendFunc(GL_CONSTANT_COLOR, GL_CONSTANT_ALPHA);
         glDepthRangef(0.5, 1);
         glBlendColor(visibleColor.x, visibleColor.y, visibleColor.z, 1);
         glLineWidth(10);
