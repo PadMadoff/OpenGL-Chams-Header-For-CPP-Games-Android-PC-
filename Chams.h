@@ -1,6 +1,7 @@
 #ifndef ZEFF_CHAMS
 #define ZEFF_CHAMS
 #include <GLES2/gl2.h>
+#include <GLES/gl.h>
 #include <dlfcn.h>
 #include <array>
 #include <string>
@@ -86,6 +87,10 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
 
     GLint id = old_glGetUniformLocation(currProgram, getShader());
     if (id == -1) return old_glDrawElements(mode, count, type, indices);
+    
+    GLboolean blend;
+    glGetBooleanv(GL_BLEND, &blend);
+    if (blend) return old_glDrawElements(mode, count, type, indices);
 
     //OFF
     if (chamsint == 0) {
@@ -227,6 +232,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     glBlendColor(0, 0, 0, 1);
     glLineWidth(1);
     glDepthRangef(0.5, 1);
+    glDisable(GL_BLEND);
 }
 
 bool mlovinit(){
