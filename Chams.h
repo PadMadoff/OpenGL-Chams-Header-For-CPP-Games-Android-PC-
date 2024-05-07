@@ -92,6 +92,10 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     glGetBooleanv(GL_BLEND, &blend);
     if (blend) return old_glDrawElements(mode, count, type, indices);
 
+    GLboolean depthTest;
+    glGetBooleanv(GL_DEPTH_TEST, &depthTest);
+    if (!depthTest) return old_glDrawElements(mode, count, type, indices);
+
     //OFF
     if (chamsint == 0) {
         old_glDrawElements(mode, count, type, indices);
