@@ -236,7 +236,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
     glBlendColor(0, 0, 0, 1);
     glLineWidth(1);
     glDepthRangef(0.5, 1);
-    glDisable(GL_BLEND);
+    return glDisable(GL_BLEND);
 }
 
 bool mlovinit(){
