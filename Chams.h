@@ -98,7 +98,7 @@ void new_glDrawElements(GLenum mode, GLsizei count, GLenum type, const void *ind
 
     //OFF
     if (chamsint == 0) {
-        old_glDrawElements(mode, count, type, indices);
+        return old_glDrawElements(mode, count, type, indices);
     }
 
     //Default Chams
